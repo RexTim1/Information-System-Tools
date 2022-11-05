@@ -50,8 +50,8 @@ db.users.find({"score": {$gt: 100}, "topics": "as", "author":/.*example.ru.*/})
 
 ЗАДАНИЕ 11
 
-db.posts.insertMany([ {"creation_date": ISODate('2022-22-10T14:19:00Z'), "author":"skbx@example.com", "topics": "mongodb"}, 
-{"creation_date": ISODate('2021-31-12T00:00:00Z'), "author": "skbx@example.ru"}])
+db.posts.insertMany([{"creation_date" : new ISODate(), "author" : "skbx@example.com", "topics" : ["mongodb"]},
+ {"creation_date" : ISODate('2021-31-12T00:00:00Z'), "author" : "skbx@example.ru"}]);
 
 ЗАДАНИЕ 12
 
