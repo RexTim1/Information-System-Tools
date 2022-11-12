@@ -72,7 +72,7 @@ db.users.aggregate( [ {$match : {"visits": {$gt: 300}}}, {$project: {karma: "$ka
 > zadd ratings 20 postgresql
 > zadd ratings 30 mongodb
 > zadd ratings 40 redis
-> zadd ratings XX 25 mysql
+> zincrby ratings 15 mysql
 > zpopmax ratings
 > zrank ratings mysql
 
