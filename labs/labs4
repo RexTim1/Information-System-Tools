@@ -33,8 +33,8 @@ select admin_user_id from discussion_group union select user_from_id from user_p
 
 ЗАДАНИЕ 8 
 
-select date(send_time), user_from_id, count(1) as cnt from user_private_message 
-group by user_from_id, send_time  having cnt<2 order by 1;
+with cntsum as (select date(send_time) time ,  user_from_id, count(1) as cnt from user_private_message group by date(send_time), user_from_id)
+select count(*) cntuser, sum(cnt) sumcnt, time from cntsum group by time having cntuser=sumcnt order by time;
 
 ЗАДАНИЕ 9
 
@@ -72,7 +72,7 @@ db.users.aggregate( [ {$match : {"visits": {$gt: 300}}}, {$project: {karma: "$ka
 > zadd ratings 20 postgresql
 > zadd ratings 30 mongodb
 > zadd ratings 40 redis
-> zadd ratings XX 15 mysql
+> zadd ratings XX 25 mysql
 > zpopmax ratings
 > zrank ratings mysql
 
